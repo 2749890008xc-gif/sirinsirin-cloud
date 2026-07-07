@@ -1,0 +1,79 @@
+package com.sirinsirin.service;
+
+import com.sirinsirin.entity.po.VideoInfoFilePost;
+import com.sirinsirin.entity.po.VideoInfoPost;
+import com.sirinsirin.entity.query.VideoInfoPostQuery;
+import com.sirinsirin.entity.vo.PaginationResultVO;
+
+import java.util.List;
+
+
+/**
+ * 视频信息，这个表示视频的发布表 业务接口
+ */
+public interface VideoInfoPostService {
+
+	/**
+	 * 根据条件查询列表
+	 */
+	List<VideoInfoPost> findListByParam(VideoInfoPostQuery param);
+
+	/**
+	 * 根据条件查询列表
+	 */
+	Integer findCountByParam(VideoInfoPostQuery param);
+
+	/**
+	 * 分页查询
+	 */
+	PaginationResultVO<VideoInfoPost> findListByPage(VideoInfoPostQuery param);
+
+	/**
+	 * 新增
+	 */
+	Integer add(VideoInfoPost bean);
+
+	/**
+	 * 批量新增
+	 */
+	Integer addBatch(List<VideoInfoPost> listBean);
+
+	/**
+	 * 批量新增/修改
+	 */
+	Integer addOrUpdateBatch(List<VideoInfoPost> listBean);
+
+	/**
+	 * 多条件更新
+	 */
+	Integer updateByParam(VideoInfoPost bean,VideoInfoPostQuery param);
+
+	/**
+	 * 多条件删除
+	 */
+	Integer deleteByParam(VideoInfoPostQuery param);
+
+	/**
+	 * 根据VideoId查询对象
+	 */
+	VideoInfoPost getVideoInfoPostByVideoId(String videoId);
+
+
+	/**
+	 * 根据VideoId修改
+	 */
+	Integer updateVideoInfoPostByVideoId(VideoInfoPost bean,String videoId);
+
+
+	/**
+	 * 根据VideoId删除
+	 */
+	Integer deleteVideoInfoPostByVideoId(String videoId);
+
+	void saveVideoInfo(VideoInfoPost videoInfoPost, List<VideoInfoFilePost> uploadFileList);
+
+	void auditVideo(String videoId, Integer status, String reason);
+
+	void transferVideoFile4Db(String videoId, String fileId, String userId, VideoInfoFilePost videoInfoFilePost);
+
+}
