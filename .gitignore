@@ -1,0 +1,13 @@
+# IDE配置
+.idea/
+*.iml
+# Maven编译打包产物（核心！阻止jar上传）
+target/
+# 日志文件
+*.log
+log.path_IS_UNDEFINED/
+# 压缩包
+*.zip
+# 系统文件
+Thumbs.db
+.DS_Store
